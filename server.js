@@ -1,15 +1,15 @@
 var express = require("express");
-
+var exhbs = require("express-handlebars");
+var bodyParser = require("body-parser")
 var PORT = process.env.PORT || 8080;
 
 var app = express();
 
 app.use(express.static("public"));
 
-app.use(express.urlencoded({extended: true}));
-app.use(express.json());
+app.use(bodyParser.urlencoded({extended: true}));
+app.use(bodyParser.json());
 
-var exhbs =require("express-handlebars");
 
 app.engine("handlebars", exhbs({defaultLayout: "main"}));
 app.set("view engine", "handlebars");
