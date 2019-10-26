@@ -1,6 +1,6 @@
 var connection = require("../config/connection.js");
 
-function printQuwationMarks(nom) {
+function printQuestionMarks(nom) {
     var arr = [];
 
     for (var i = 0; i < nom; i++) {
@@ -23,7 +23,7 @@ function objToSql(ob) {
     return arr.toString();
 }
 var orm = {
-selecetAll:function (tableInput, cb) {
+selecetAll: function (tableInput, cb) {
     var queryString = "SELCET * FROM" + tableInput + ";";
     connection.query(queryString, function (err, result) {
         if (err){
@@ -32,7 +32,7 @@ selecetAll:function (tableInput, cb) {
         cb(result);
     });
 },
-insertOne:function (table, cols, vals,cb) {
+insertOne: function (table, cols, vals,cb) {
     var queryString = "INSERT INTO" + table;
     queryString +="(";
     queryString += cols.toString();
@@ -51,6 +51,22 @@ insertOne:function (table, cols, vals,cb) {
       cb(result);
     });
 },
-undateOne
+undateOne: function (table, objColVals, condition, cb) {
+    var queryString = "UPDATE" + table;
+
+    queryString += "SET";
+    queryString += objToSql(objColVals);
+    queryString += "WHERE ";
+    queryString += condition;
+
+    console.log(queryString);
+    condition.query(queryString, function (err, result) {
+        if(err){
+            throw err;
+        }
+        cb(result);
+    });
 }
+};
+
 module.exports = orm;
