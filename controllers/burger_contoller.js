@@ -12,3 +12,19 @@ router.get("/", function (req, res) {
         res.render("index", hdbrsObj);
     });  
 });
+
+router.post("/api/burgers", function (req, res) {
+    var burInfo = req.body;
+    
+    burger.updateOne(function(data){
+        ["burger_name", "devoured"],
+        [burInfo.burger_name, burInfo.devoured],
+        function(result){
+            res.json{{ id: result.insertId}};
+        }
+    });
+});
+
+router.put("", function(req, res){
+
+});
