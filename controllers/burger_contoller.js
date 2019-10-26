@@ -10,21 +10,37 @@ router.get("/", function (req, res) {
         };
         console.log(hdbrsObj);
         res.render("index", hdbrsObj);
-    });  
+    });
 });
 
 router.post("/api/burgers", function (req, res) {
     var burInfo = req.body;
-    
-    burger.updateOne(function(data){
+
+    burger.insertOne(function (data) {
         ["burger_name", "devoured"],
         [burInfo.burger_name, burInfo.devoured],
-        function(result){
-            res.json{{ id: result.insertId}};
+        function (result) {
+            res.json {
+                {
+                    id: result.insertId
+                }
+            };
         }
     });
 });
 
-router.put("", function(req, res){
+router.put("/api/burgers/:id", function (req, res) {
+    var condition = "id = " + req.perams.id;
 
+    console.log("condition", condition);
+
+    burger.updateOne({
+        devoured: req.body.devoured
+    }, condition, function (result) {
+        if ((result, changedRows === 0)) {
+            return res.status(404).end();
+        } else {
+            res.status(200).end();
+        }
+    })
 });
