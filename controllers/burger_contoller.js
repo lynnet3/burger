@@ -20,11 +20,11 @@ router.post("/api/burgers", function (req, res) {
         ["burger_name", "devoured"],
         [burInfo.burger_name, burInfo.devoured],
         function (result) {
-            res.json {
+            res.json (
                 {
                     id: result.insertId
                 }
-            };
+            );
         }
     });
 });
