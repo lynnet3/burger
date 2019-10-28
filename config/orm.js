@@ -23,7 +23,7 @@ function objToSql(ob) {
     return arr.toString();
 }
 var orm = {
-selecetAll: function (tableInput, cb) {
+selectAll: function (tableInput, cb) {
     var queryString = "SELCET * FROM" + tableInput + ";";
     connection.query(queryString, function (err, result) {
         if (err){
