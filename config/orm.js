@@ -24,7 +24,7 @@ function objToSql(ob) {
 }
 var orm = {
 selectAll: function (tableInput, cb) {
-    var queryString = "SELCET * FROM" + tableInput + ";";
+    var queryString = "SELCET * FROM " + tableInput + ";";
     connection.query(queryString, function (err, result) {
         if (err){
             throw err;
@@ -33,7 +33,7 @@ selectAll: function (tableInput, cb) {
     });
 },
 insertOne: function (table, cols, vals,cb) {
-    var queryString = "INSERT INTO" + table;
+    var queryString = "INSERT INTO " + table;
     queryString +="(";
     queryString += cols.toString();
     queryString += ") ";
@@ -52,9 +52,9 @@ insertOne: function (table, cols, vals,cb) {
     });
 },
 undateOne: function (table, objColVals, condition, cb) {
-    var queryString = "UPDATE" + table;
+    var queryString = "UPDATE " + table;
 
-    queryString += "SET";
+    queryString += "SET ";
     queryString += objToSql(objColVals);
     queryString += "WHERE ";
     queryString += condition;
