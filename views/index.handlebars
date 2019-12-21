@@ -24,12 +24,14 @@
             <div class="panel panel-default">
                 <div class="panel-heading" id="leftside">
                     <p>Burger Menu</p>
+                </div>
+                <div class="panel-body">
                     <ul>
                         {{#each burgers}}
                         {{#unless devoured}}
-                        <span>{{this.id}} -{{this.burger_name}} </span>
+                        <span>{{this.id}} -{{this.burger_name}}</span>
                         <button type="button" class="eatburger btn btn-warning" id="eatbutton" data-id="{{this.id}}"
-                            data-newDevoured{{devour}}><i class="fas fa-hamburger"></i>Order</button>
+                            data-newDevoured="{{devour}}"><i class="fas fa-hamburger"></i>Order</button>
                         {{/unless}}
                         {{/each}}
                     </ul>
@@ -42,14 +44,18 @@
                 <div class="panel panel-default">
                     <div class="panel-heading" id="rightside">
                         <p>Burgers That Have Been Devoured</p>
+                    </div>
+                    <div class="panel-body">
                         <ul>
-                            {{#each}}
-                            {{#if}}
+                            {{#each burgers}}
+                            {{#if devoured}}
                             <span>{{this.id}} -{{this.burger_name}} </span>
+                            <button type="button" class="devouredBurger btn btn-danger" id="doneBurger" data-id="{{this.id}}"
+                                data-newDevoured="{{devour}}"><i class="fas fa-hamburger"></i>Done</button>
                             {{/if}}
                             {{/each}}
                         </ul>
-                    </div>
+                   </div>
                 </div>
             </div>
         </div>
