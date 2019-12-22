@@ -1,5 +1,5 @@
 var express = require("express");
-var burger = require("../models/burger");
+var burger = require("../models/burger.js");
 
 var router = express.Router();
 
@@ -15,6 +15,8 @@ router.get("/", function (req, res) {
 
 router.post("/api/burgers", function (req, res) {
     var burInfo = req.body;
+    console.log("TESTING POST ROUTE");
+ console.log(burInfo);
 
     burger.insertOne(function (data) {
         ["burger_name", "devoured"],

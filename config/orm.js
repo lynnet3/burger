@@ -1,4 +1,4 @@
-var connection = require("../config/connection.js");
+var connection = require("../config/connection");
 
 function printQuestionMarks(nom) {
     var arr = [];
@@ -32,7 +32,7 @@ selectAll: function (tableInput, cb) {
         cb(result);
     });
 },
-insertOne: function (table, cols, vals,cb) {
+insertOne: function (table, cols, vals, cb) {
     var queryString = "INSERT INTO " + table;
     queryString +="(";
     queryString += cols.toString();
